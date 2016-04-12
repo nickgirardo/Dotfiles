@@ -1,0 +1,76 @@
+set nocompatible
+filetype off
+
+let $VIMRUNTIME='/usr/share/vim/vim73/'
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+
+call vundle#end()
+filetype plugin indent on
+
+"remap leader to <space>; \ is out of the way
+let mapleader = "\<Space>"
+
+"j then k to return to normal mode
+inoremap jk <ESC>
+nnoremap ; :
+nnoremap <leader>t :tabnew<space>
+
+"shift can be annoying
+command W w
+command Q q
+command WQ wq
+command Wq wq
+
+nmap j gj
+nmap k gk
+
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_match_window_bottom = 0
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_switch_buffer = 0
+
+"For emmet
+let g:user_emmet_leader_key='<C-G>'
+
+"Basic settings"
+set backspace=indent,eol,start "Makes backspace work"
+set history=500 "Sets undo history size"
+set ruler "Sets up status bar"
+set number "Turns on line numbering"
+set tabstop=4 "Sets indent size of tabs"
+set softtabstop=4 "Soft tabs"
+set expandtab "Tabs suck. Spaces rule."
+set shiftwidth=4 "Sets auto-indent size"
+set laststatus=2 "Always keeps the status bar active"
+set autoindent "Turns on auto-indenting"
+set copyindent "Copy the previous indentation on autoindenting"
+set smartindent "Remembers previous indent when creating new lines"
+
+au BufNewFile,BufRead *.js,*.jsx*,*.coffee,*.rb,*.html,*.xml :setlocal sw=2 ts=2 sts=2 " Two spaces for js/coffee files "
+au FileType make setlocal noexpandtab
+
+"set nu
+"set shiftwidth=4
+"set tabstop=4
+
+set fdm=manual
+set mouse=a
+
+syntax on
+
+filetype plugin indent on
+
+au BufRead,BufNewFile *.json set filetype=javascript
+au BufRead,BufNewFile *.jsbundle set filetype=javascript
+au Bufenter *.hs compiler ghc
+
+execute pathogen#infect()
+
+let g:haddock_browser="open"
+let g:haddock_browser_callformat = "%s %s"
