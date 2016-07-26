@@ -15,8 +15,12 @@ let mapleader = "\<Space>"
 
 "j then k to return to normal mode
 inoremap jk <ESC>
-nnoremap ; :
+nnoremap ; :!
 nnoremap <leader>t :tabnew<space>
+
+nnoremap <leader>w :w<CR>
+nnoremap <leader>w :q<CR>
+
 
 "shift can be annoying
 command W w
