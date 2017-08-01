@@ -1,0 +1,46 @@
+# Environment Vars
+# export EDITOR='/usr/local/Cellar/vim/7.4.2109/bin/vim'
+export PS1='\$ '
+export HISTSIZE=50000
+
+export LIBRARY_PATH="$LIBRARY_PATH:/opt/local/lib/"
+
+export NODE_ENV=local
+export DEBUG='sketchdeck*'
+
+# Time saving aliases
+alias bashrc='$EDITOR ~/.bash_profile'
+alias vimrc='$EDITOR ~/.vimrc'
+alias py='python3'
+# Git aliases
+alias gs='git status'
+alias gd='git diff -D'
+alias gds='git diff -D --staged'
+alias gl='git -c color.ui=always log --oneline | head -20'
+
+# Fix vim versioning
+# TODO consider using variable latest to assist updating
+# alias vim='/usr/local/Cellar/vim/7.4.2109/bin/vim'
+
+# Common typing mistakes
+alias sl='ls'
+
+# Simple but not thourough (e.g. cannot -p)
+mkcd () {
+    mkdir "$1"
+    cd "$1"
+}
+
+# List/ change screenshot directory
+# Only works if you pass an absolute path
+screenshots () {
+    if [[ -z $1 ]]; then
+        defaults read com.apple.screencapture location
+    elif [[ -d $1 ]]; then
+        defaults write com.apple.screencapture location $1
+        killall SystemUIServer
+    else
+        echo "Not a valid directory"
+    fi
+}
+
