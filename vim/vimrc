@@ -1,14 +1,14 @@
 set nocompatible
 filetype off
 
-let $VIMRUNTIME='/usr/share/vim/vim73/'
+let $VIMRUNTIME='/usr/share/vim/vim74/'
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'
+execute pathogen#infect()
 
-call vundle#end()
 filetype plugin indent on
+
+set shell=/bin/bash\ -l
 
 "remap leader to <space>; \ is out of the way
 let mapleader = "\<Space>"
@@ -16,11 +16,32 @@ let mapleader = "\<Space>"
 "j then k to return to normal mode
 inoremap jk <ESC>
 nnoremap ; :!
+
+nnoremap <Home> gg
+nnoremap <End> G
+
+"I don't like hitting shift
+nnoremap <leader>j :
+"This line is my favorite
 nnoremap <leader>t :tabnew<space>
-
 nnoremap <leader>w :w<CR>
-nnoremap <leader>w :q<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>p :set paste!<CR>
+"Switch tabs fast
+"TODO If there are only, for instance, 6 tabs <leader>8 should go to the last
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+nnoremap <leader>3 3gt
+nnoremap <leader>4 4gt
+nnoremap <leader>5 5gt
+nnoremap <leader>6 6gt
+nnoremap <leader>7 7gt
+nnoremap <leader>8 8gt
+"9 to move to last tab (like firefox etc)
+nnoremap <leader>9 :tablast<CR>
 
+"I don't like have to hit shift to switch tabs backwards
+nnoremap gr gT
 
 "shift can be annoying
 command W w
@@ -30,6 +51,9 @@ command Wq wq
 
 nmap j gj
 nmap k gk
+
+"use system clipboard
+":set clipboard=unnamed
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_match_window_bottom = 0
@@ -56,8 +80,10 @@ set autoindent "Turns on auto-indenting"
 set copyindent "Copy the previous indentation on autoindenting"
 set smartindent "Remembers previous indent when creating new lines"
 
-au BufNewFile,BufRead *.js,*.jsx*,*.coffee,*.rb,*.html,*.xml :setlocal sw=2 ts=2 sts=2 " Two spaces for js/coffee files "
+au BufNewFile,BufRead *.js,*.jsx*,*.rb,*.html,*.xml :setlocal sw=2 ts=2 sts=2 " Two spaces for js/ruby/etc files "
 au FileType make setlocal noexpandtab
+
+au BufNewFile,BufRead *.jade,*.coffee :setlocal autoindent noexpandtab ts=4 sw=4 " Coffee setup"
 
 "set nu
 "set shiftwidth=4
@@ -72,9 +98,7 @@ filetype plugin indent on
 
 au BufRead,BufNewFile *.json set filetype=javascript
 au BufRead,BufNewFile *.jsbundle set filetype=javascript
-au Bufenter *.hs compiler ghc
-
-execute pathogen#infect()
 
 let g:haddock_browser="open"
 let g:haddock_browser_callformat = "%s %s"
+
