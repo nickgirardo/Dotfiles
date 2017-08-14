@@ -79,6 +79,7 @@ set laststatus=2 "Always keeps the status bar active"
 set autoindent "Turns on auto-indenting"
 set copyindent "Copy the previous indentation on autoindenting"
 set smartindent "Remembers previous indent when creating new lines"
+set wildignorecase "Ignore case while autocompletting search results"
 
 au BufNewFile,BufRead *.js,*.jsx*,*.rb,*.html,*.xml :setlocal sw=2 ts=2 sts=2 " Two spaces for js/ruby/etc files "
 au FileType make setlocal noexpandtab
