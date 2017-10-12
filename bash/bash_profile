@@ -1,5 +1,5 @@
 # Environment Vars
-# export EDITOR='/usr/local/Cellar/vim/7.4.2109/bin/vim'
+export EDITOR=vim
 export PS1='\$ '
 export HISTSIZE=50000
 
@@ -17,10 +17,16 @@ alias gs='git status'
 alias gd='git diff -D'
 alias gds='git diff -D --staged'
 alias gl='git -c color.ui=always log --oneline | head -20'
+alias gb='git branch -a'
 
 # Fix vim versioning
 # TODO consider using variable latest to assist updating
 # alias vim='/usr/local/Cellar/vim/7.4.2109/bin/vim'
+
+# Tab complete case insensitive
+bind "set completion-ignore-case on"
+# When multiple matches, always show all matches
+bind "set show-all-if-ambiguous on"
 
 # Common typing mistakes
 alias sl='ls'
