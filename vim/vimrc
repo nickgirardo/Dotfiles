@@ -26,7 +26,9 @@ nnoremap <leader>j :
 nnoremap <leader>t :tabnew<space>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
+nnoremap <leader>e :e<CR>
 nnoremap <leader>p :set paste!<CR>
+nnoremap <leader>h :set hlsearch!<CR>
 "Switch tabs fast
 "TODO If there are only, for instance, 6 tabs <leader>8 should go to the last
 nnoremap <leader>1 1gt
