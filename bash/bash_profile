@@ -16,6 +16,8 @@ alias py='python3'
 alias gs='git status'
 alias gd='git diff -D'
 alias gds='git diff -D --staged'
+# What did my last commit change?
+alias gdl='git diff HEAD~ HEAD'
 alias gl='git -c color.ui=always log --oneline | head -20'
 alias gb='git branch -a'
 
