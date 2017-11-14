@@ -33,6 +33,11 @@ bind "set show-all-if-ambiguous on"
 # Common typing mistakes
 alias sl='ls'
 
+# FZF (for fuzzyfinding) config
+export FZF_DEFAULT_OPTS='--height 40%'
+export FZF_DEFAULT_COMMAND='ag -g ""'
+alias vf='vim $(fzf)'
+
 # Simple but not thourough (e.g. cannot -p)
 mkcd () {
     mkdir "$1"

@@ -2,7 +2,20 @@ set nocompatible
 filetype off
 
 let $VIMRUNTIME='/usr/share/vim/vim74/'
-set rtp+=~/.vim/bundle/Vundle.vim
+
+call plug#begin('~/.vim/plugged')
+
+"fuzzyfinding
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+
+"colors
+Plug 'ap/vim-css-color'
+
+"Airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+call plug#end()
 
 execute pathogen#infect()
 
@@ -20,27 +33,29 @@ nnoremap ; :!
 nnoremap <Home> gg
 nnoremap <End> G
 
-"I don't like hitting shift
-nnoremap <leader>j :
-"This line is my favorite
-nnoremap <leader>t :tabnew<space>
 nnoremap <leader>w :w<CR>
-nnoremap <leader>q :q<CR>
 nnoremap <leader>e :e<CR>
 nnoremap <leader>p :set paste!<CR>
 nnoremap <leader>h :set hlsearch!<CR>
-"Switch tabs fast
-"TODO If there are only, for instance, 6 tabs <leader>8 should go to the last
-nnoremap <leader>1 1gt
-nnoremap <leader>2 2gt
-nnoremap <leader>3 3gt
-nnoremap <leader>4 4gt
-nnoremap <leader>5 5gt
-nnoremap <leader>6 6gt
-nnoremap <leader>7 7gt
-nnoremap <leader>8 8gt
-"9 to move to last tab (like firefox etc)
-nnoremap <leader>9 :tablast<CR>
+"This line is my favorite
+nnoremap <leader>t :Files<CR>
+nnoremap <leader>b :buffers<CR>:buffer<Space>
+"TODO close vim if last buffer
+nnoremap <leader>q :bp <BAR> bd #<CR>
+nnoremap <C-l> :bnext<CR>
+nnoremap <C-h> :bprevious<CR>
+"Switch buffers quickly
+"TODO If there are only, for instance, 6 buffers <leader>8 should go to the last
+nnoremap <leader>1 :b 1<CR>
+nnoremap <leader>2 :b 2<CR>
+nnoremap <leader>3 :b 3<CR>
+nnoremap <leader>4 :b 4<CR>
+nnoremap <leader>5 :b 5<CR>
+nnoremap <leader>6 :b 6<CR>
+nnoremap <leader>7 :b 7<CR>
+nnoremap <leader>8 :b 8<CR>
+"9 should move to last buffer (like firefox etc)
+nnoremap <leader>9 :b 9<CR>
 
 "I don't like have to hit shift to switch tabs backwards
 nnoremap gr gT
@@ -53,6 +68,10 @@ command Wq wq
 
 nmap j gj
 nmap k gk
+
+"more memorable keys for scrolling screen
+map <C-j> <C-e>
+map <C-k> <C-y>
 
 "use system clipboard
 ":set clipboard=unnamed
@@ -68,7 +87,16 @@ let g:ctrlp_switch_buffer = 0
 "For emmet
 let g:user_emmet_leader_key='<C-G>'
 
+"Airline configuration
+
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+
 "Basic settings"
+set hidden
 set backspace=indent,eol,start "Makes backspace work"
 set history=500 "Sets undo history size"
 set ruler "Sets up status bar"
