@@ -12,6 +12,7 @@ export DEBUG='sketchdeck*'
 alias bashrc='$EDITOR ~/.bash_profile'
 alias vimrc='$EDITOR ~/.vimrc'
 alias py='python3'
+alias h='http-server'
 # Git aliases
 alias gs='git status'
 alias gd='git diff -D'
