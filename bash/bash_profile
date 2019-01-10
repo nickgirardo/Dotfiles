@@ -3,7 +3,8 @@ export EDITOR=vim
 export PS1='\$ '
 export HISTSIZE=50000
 
-export LIBRARY_PATH="$LIBRARY_PATH:/opt/local/lib/"
+export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib/"
+export qtpath="/usr/local/Cellar/qt@4/4.8.7_3"
 
 export NODE_ENV=local
 export DEBUG='sketchdeck*'
@@ -13,6 +14,7 @@ alias bashrc='$EDITOR ~/.bash_profile'
 alias vimrc='$EDITOR ~/.vimrc'
 alias py='python3'
 alias h='http-server'
+alias n='ngrok http 8080 -host-header="localhost:8080"'
 # Git aliases
 alias gs='git status'
 alias gd='git diff -D'
