@@ -1,7 +1,7 @@
 set nocompatible
 filetype off
 
-let $VIMRUNTIME='/usr/share/vim/vim74/'
+let $VIMRUNTIME='/usr/share/vim/vim80/'
 
 call plug#begin('~/.vim/plugged')
 
@@ -25,6 +25,12 @@ Plug 'Quramy/tsuquyomi'
 "glsl
 Plug 'beyondmarc/glsl.vim'
 
+"Linting etc
+Plug 'dense-analysis/ale'
+
+"pep8 - Python Formatting
+Plug 'nvie/vim-flake8'
+
 call plug#end()
 
 execute pathogen#infect()
@@ -46,6 +52,7 @@ nnoremap <End> G
 
 nnoremap <leader>w :w<CR>
 nnoremap <leader>e :e<CR>
+nnoremap <leader>E :Explore<CR>
 nnoremap <leader>p :set paste!<CR>
 nnoremap <leader>h :set hlsearch!<CR>
 "This line is my favorite
@@ -98,6 +105,10 @@ let g:ctrlp_switch_buffer = 0
 "For emmet
 let g:user_emmet_leader_key='<C-G>'
 
+" Ale settings
+" Disable linting for all minified JS files and Assembly files
+let g:ale_pattern_options = {'\.min.js$': {'ale_enabled': 0},  '\.asm$':  {'ale_enabled': 0}}
+
 "Airline configuration
 
 " Enable the list of buffers
@@ -120,7 +131,7 @@ set copyindent "Copy the previous indentation on autoindenting"
 set smartindent "Remembers previous indent when creating new lines"
 set wildignorecase "Ignore case while autocompletting search results"
 
-au BufNewFile,BufRead *.js,*.jsx*,*.rb,*.html,*.xml,*.wat :setlocal sw=2 ts=2 sts=2 " Two spaces for js/ruby/etc files "
+au BufNewFile,BufRead *.js,*.jsx*,*.rb,*.html,*.css,*.scss,*.svg,*.xml,*.wat :setlocal sw=2 ts=2 sts=2 " Two spaces for js/ruby/etc files "
 au FileType make setlocal noexpandtab
 
 au BufNewFile,BufRead *.jade,*.coffee :setlocal autoindent noexpandtab ts=4 sw=4 " Coffee setup"
